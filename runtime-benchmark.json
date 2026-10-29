@@ -1,0 +1,157 @@
+{
+  "summary": [
+    {
+      "name": "300 navigation requests",
+      "beforeMs": 7.157,
+      "afterMs": 3.16,
+      "reductionPercent": 55.8,
+      "checksum": "0f471e902d38922e721af795b52ac85c5206c5eee4fa059703c03288af0d7fc3"
+    },
+    {
+      "name": "100000 ray/box intersections",
+      "beforeMs": 4.909,
+      "afterMs": 3.832,
+      "reductionPercent": 21.9,
+      "checksum": "103781.5621294829"
+    },
+    {
+      "name": "3600 simulation ticks, 6 bots",
+      "beforeMs": 98.949,
+      "afterMs": 55.865,
+      "reductionPercent": 43.5,
+      "checksum": "e8819d0a8adcb61b45744692168bffbd226f9504e7b95ce34b281652e8bdae3e"
+    }
+  ],
+  "raw": {
+    "baseline": [
+      {
+        "node": "v22.16.0",
+        "samples": 5,
+        "reports": [
+          {
+            "name": "300 navigation requests",
+            "medianMs": 7.157,
+            "checksum": "0f471e902d38922e721af795b52ac85c5206c5eee4fa059703c03288af0d7fc3"
+          },
+          {
+            "name": "100000 ray/box intersections",
+            "medianMs": 4.909,
+            "checksum": "103781.5621294829"
+          },
+          {
+            "name": "3600 simulation ticks, 6 bots",
+            "medianMs": 98.949,
+            "checksum": "e8819d0a8adcb61b45744692168bffbd226f9504e7b95ce34b281652e8bdae3e"
+          }
+        ]
+      },
+      {
+        "node": "v22.16.0",
+        "samples": 5,
+        "reports": [
+          {
+            "name": "300 navigation requests",
+            "medianMs": 6.989,
+            "checksum": "0f471e902d38922e721af795b52ac85c5206c5eee4fa059703c03288af0d7fc3"
+          },
+          {
+            "name": "100000 ray/box intersections",
+            "medianMs": 4.548,
+            "checksum": "103781.5621294829"
+          },
+          {
+            "name": "3600 simulation ticks, 6 bots",
+            "medianMs": 99.741,
+            "checksum": "e8819d0a8adcb61b45744692168bffbd226f9504e7b95ce34b281652e8bdae3e"
+          }
+        ]
+      },
+      {
+        "node": "v22.16.0",
+        "samples": 5,
+        "reports": [
+          {
+            "name": "300 navigation requests",
+            "medianMs": 7.273,
+            "checksum": "0f471e902d38922e721af795b52ac85c5206c5eee4fa059703c03288af0d7fc3"
+          },
+          {
+            "name": "100000 ray/box intersections",
+            "medianMs": 4.931,
+            "checksum": "103781.5621294829"
+          },
+          {
+            "name": "3600 simulation ticks, 6 bots",
+            "medianMs": 95.716,
+            "checksum": "e8819d0a8adcb61b45744692168bffbd226f9504e7b95ce34b281652e8bdae3e"
+          }
+        ]
+      }
+    ],
+    "optimized": [
+      {
+        "node": "v22.16.0",
+        "samples": 5,
+        "reports": [
+          {
+            "name": "300 navigation requests",
+            "medianMs": 3.16,
+            "checksum": "0f471e902d38922e721af795b52ac85c5206c5eee4fa059703c03288af0d7fc3"
+          },
+          {
+            "name": "100000 ray/box intersections",
+            "medianMs": 3.832,
+            "checksum": "103781.5621294829"
+          },
+          {
+            "name": "3600 simulation ticks, 6 bots",
+            "medianMs": 56.293,
+            "checksum": "e8819d0a8adcb61b45744692168bffbd226f9504e7b95ce34b281652e8bdae3e"
+          }
+        ]
+      },
+      {
+        "node": "v22.16.0",
+        "samples": 5,
+        "reports": [
+          {
+            "name": "300 navigation requests",
+            "medianMs": 3.031,
+            "checksum": "0f471e902d38922e721af795b52ac85c5206c5eee4fa059703c03288af0d7fc3"
+          },
+          {
+            "name": "100000 ray/box intersections",
+            "medianMs": 3.653,
+            "checksum": "103781.5621294829"
+          },
+          {
+            "name": "3600 simulation ticks, 6 bots",
+            "medianMs": 53.611,
+            "checksum": "e8819d0a8adcb61b45744692168bffbd226f9504e7b95ce34b281652e8bdae3e"
+          }
+        ]
+      },
+      {
+        "node": "v22.16.0",
+        "samples": 5,
+        "reports": [
+          {
+            "name": "300 navigation requests",
+            "medianMs": 3.196,
+            "checksum": "0f471e902d38922e721af795b52ac85c5206c5eee4fa059703c03288af0d7fc3"
+          },
+          {
+            "name": "100000 ray/box intersections",
+            "medianMs": 3.867,
+            "checksum": "103781.5621294829"
+          },
+          {
+            "name": "3600 simulation ticks, 6 bots",
+            "medianMs": 55.865,
+            "checksum": "e8819d0a8adcb61b45744692168bffbd226f9504e7b95ce34b281652e8bdae3e"
+          }
+        ]
+      }
+    ]
+  }
+}

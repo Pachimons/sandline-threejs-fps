@@ -33,6 +33,12 @@ const shadowTexture=(()=>{const c=document.createElement('canvas');c.width=c.hei
 const shadowMat=new THREE.MeshBasicMaterial({map:shadowTexture,transparent:true,depthWrite:false,toneMapped:false});
 const v1=new THREE.Vector3(),v2=new THREE.Vector3(),v3=new THREE.Vector3(),v4=new THREE.Vector3(),v5=new THREE.Vector3(),q1=new THREE.Quaternion(),q2=new THREE.Quaternion(),q3=new THREE.Quaternion();
 function bone(model:THREE.Object3D,name:string){let found:THREE.Object3D|undefined;model.traverse(o=>{if(o.name.replace(/[^a-z0-9]/gi,'').toLowerCase()==='mixamorig'+name.toLowerCase())found=o;});if(!found)throw new Error('Missing character joint: '+name);return found;}
+function characterWeapon(kind:WeaponKind):THREE.Group{
+ const gun=createHeldWeapon(kind);
+ // This policy is fixed for a held weapon, so apply it only on creation.
+ gun.traverse(o=>{if(o instanceof THREE.Mesh)o.castShadow=false;});
+ return gun;
+}
 
 export function createCharacter(team:Team):THREE.Group{
  if(!asset)throw new Error('Character assets are not loaded');
@@ -65,7 +71,7 @@ export function createCharacter(team:Team):THREE.Group{
   const across=hand.worldToLocal(bone(model,prefix+'HandIndex1').getWorldPosition(new THREE.Vector3())).sub(hand.worldToLocal(bone(model,prefix+'HandPinky1').getWorldPosition(new THREE.Vector3()))).normalize().multiplyScalar(side<0?1:-1);
   const z=finger.negate(),y=new THREE.Vector3().crossVectors(z,across).normalize(),x=new THREE.Vector3().crossVectors(y,z).normalize();
   return {upper:bone(model,prefix+'Arm'),lower:bone(model,prefix+'ForeArm'),hand,side,basis:new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(x,y,z)).invert()};});
- const gun=createHeldWeapon('rifle');pose.add(gun);gun.position.set(.09,1.23,-.28);
+ const gun=characterWeapon('rifle');pose.add(gun);gun.position.set(.09,1.23,-.28);
  const shadow=new THREE.Mesh(new THREE.PlaneGeometry(1.18,1.18),shadowMat);shadow.rotation.x=-Math.PI/2;shadow.position.y=.015;root.add(shadow);
  // Callsign plates are skinned with the vest in outfitOperator.
  mixer.update(0);const joints:THREE.Object3D[]=[];model.traverse(o=>{if(o instanceof THREE.Bone)joints.push(o);});
@@ -130,7 +136,7 @@ export function updateCharacter(root:THREE.Group,a:Actor,time:number,delta:numbe
  r.death=0;
  const death=0,crouch=a.crouched,drop=crouch?.49:0;
  r.pose.position.set(0,-drop,0);r.pose.rotation.set(0,0,0);
- if(crouch){if(r.model.userData.crouchHipOffset)r.hip.position.add(v1.fromArray(r.model.userData.crouchHipOffset));else r.hip.position.z-=5;for(const side of ['Left','Right']){bone(r.model,side+'UpLeg').rotateX(.60);bone(r.model,side+'Leg').rotateX(-1.05);}}
+ if(crouch){if(r.model.userData.crouchHipOffset)r.hip.position.add(v1.fromArray(r.model.userData.crouchHipOffset));else r.hip.position.z-=5;r.deathBones.leftThigh.rotateX(.60);r.deathBones.rightThigh.rotateX(.60);r.deathBones.leftShin.rotateX(-1.05);r.deathBones.rightShin.rotateX(-1.05);}
  const shotAge=time-a.shotTime,shotRecoil=Math.max(0,1-shotAge/.16),recoilPower=WEAPON_PRESENTATION[a.weapon].recoilPitch;
  // Layer aim on the torso first, then solve the arms to the weapon sockets.
  // This keeps the shoulder line and neck aligned with the rifle rather than
@@ -145,9 +151,9 @@ export function updateCharacter(root:THREE.Group,a:Actor,time:number,delta:numbe
  r.arms[0].upper.rotateZ(-r.hitSide*hitWave*.16); r.arms[1].upper.rotateZ(-r.hitSide*hitWave*.11);
  if(hurt<.015){r.hitSide*=Math.exp(-delta*18);r.hitHead=0;}
  const reload=a.guns[a.weapon].reloadLeft>0?1-a.guns[a.weapon].reloadLeft/WEAPONS[a.weapon].reload:0,throwAge=time-a.throwTime;
- if(r.kind!==a.weapon){r.pose.remove(r.gun);r.gun=createHeldWeapon(a.weapon);r.pose.add(r.gun);r.kind=a.weapon;}
+ if(r.kind!==a.weapon){r.pose.remove(r.gun);r.gun=characterWeapon(a.weapon);r.pose.add(r.gun);r.kind=a.weapon;}
  r.gun.position.set(.09,1.23,-.28);r.gun.rotation.set(a.pitch*.75,0,0);r.gun.visible=throwAge>.52;
- updateHeldWeapon(r.gun,a,time);r.gun.traverse(o=>{if(o instanceof THREE.Mesh)o.castShadow=false;});
+ updateHeldWeapon(r.gun,a,time);
  root.updateWorldMatrix(true,true);
  const grips=r.gun.userData.grips as {left:THREE.Object3D;right:THREE.Object3D};grips.right.getWorldPosition(handR);root.worldToLocal(handR);grips.left.getWorldPosition(handL);root.worldToLocal(handL);
  if(throwAge>=0&&throwAge<.65){handR.set(.26,1.3+Math.sin(throwAge/.65*Math.PI)*.3-drop,-.25-Math.sin(throwAge/.65*Math.PI)*.3);handL.set(-.25,1.04-drop,-.1);}

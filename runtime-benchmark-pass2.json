@@ -1,0 +1,231 @@
+{
+  "summary": [
+    {
+      "name": "300 navigation requests",
+      "beforeMs": 3.024,
+      "afterMs": 2.185,
+      "reductionPercent": 27.7,
+      "checksum": "0f471e902d38922e721af795b52ac85c5206c5eee4fa059703c03288af0d7fc3"
+    },
+    {
+      "name": "100000 ray/box intersections",
+      "beforeMs": 3.603,
+      "afterMs": 3.689,
+      "reductionPercent": -2.4,
+      "checksum": "103781.5621294829"
+    },
+    {
+      "name": "3600 simulation ticks, 6 bots",
+      "beforeMs": 54.548,
+      "afterMs": 22.044,
+      "reductionPercent": 59.6,
+      "checksum": "e8819d0a8adcb61b45744692168bffbd226f9504e7b95ce34b281652e8bdae3e"
+    },
+    {
+      "name": "20000 circle/box collision queries",
+      "beforeMs": 4.083,
+      "afterMs": 0.836,
+      "reductionPercent": 79.5,
+      "checksum": "3389"
+    },
+    {
+      "name": "3600 simulation ticks, 10 bots",
+      "beforeMs": 189.979,
+      "afterMs": 63.221,
+      "reductionPercent": 66.7,
+      "checksum": "512817f79515e740fde72f8ce967eade3943a64397dccfdf118660ced7694b6f"
+    }
+  ],
+  "raw": {
+    "baseline": [
+      {
+        "node": "v22.16.0",
+        "samples": 5,
+        "reports": [
+          {
+            "name": "300 navigation requests",
+            "medianMs": 2.975,
+            "checksum": "0f471e902d38922e721af795b52ac85c5206c5eee4fa059703c03288af0d7fc3"
+          },
+          {
+            "name": "100000 ray/box intersections",
+            "medianMs": 3.644,
+            "checksum": "103781.5621294829"
+          },
+          {
+            "name": "3600 simulation ticks, 6 bots",
+            "medianMs": 54.433,
+            "checksum": "e8819d0a8adcb61b45744692168bffbd226f9504e7b95ce34b281652e8bdae3e"
+          },
+          {
+            "name": "20000 circle/box collision queries",
+            "medianMs": 4.051,
+            "checksum": "3389"
+          },
+          {
+            "name": "3600 simulation ticks, 10 bots",
+            "medianMs": 190.326,
+            "checksum": "512817f79515e740fde72f8ce967eade3943a64397dccfdf118660ced7694b6f"
+          }
+        ]
+      },
+      {
+        "node": "v22.16.0",
+        "samples": 5,
+        "reports": [
+          {
+            "name": "300 navigation requests",
+            "medianMs": 3.073,
+            "checksum": "0f471e902d38922e721af795b52ac85c5206c5eee4fa059703c03288af0d7fc3"
+          },
+          {
+            "name": "100000 ray/box intersections",
+            "medianMs": 3.593,
+            "checksum": "103781.5621294829"
+          },
+          {
+            "name": "3600 simulation ticks, 6 bots",
+            "medianMs": 54.548,
+            "checksum": "e8819d0a8adcb61b45744692168bffbd226f9504e7b95ce34b281652e8bdae3e"
+          },
+          {
+            "name": "20000 circle/box collision queries",
+            "medianMs": 4.083,
+            "checksum": "3389"
+          },
+          {
+            "name": "3600 simulation ticks, 10 bots",
+            "medianMs": 189.182,
+            "checksum": "512817f79515e740fde72f8ce967eade3943a64397dccfdf118660ced7694b6f"
+          }
+        ]
+      },
+      {
+        "node": "v22.16.0",
+        "samples": 5,
+        "reports": [
+          {
+            "name": "300 navigation requests",
+            "medianMs": 3.024,
+            "checksum": "0f471e902d38922e721af795b52ac85c5206c5eee4fa059703c03288af0d7fc3"
+          },
+          {
+            "name": "100000 ray/box intersections",
+            "medianMs": 3.603,
+            "checksum": "103781.5621294829"
+          },
+          {
+            "name": "3600 simulation ticks, 6 bots",
+            "medianMs": 55.121,
+            "checksum": "e8819d0a8adcb61b45744692168bffbd226f9504e7b95ce34b281652e8bdae3e"
+          },
+          {
+            "name": "20000 circle/box collision queries",
+            "medianMs": 4.23,
+            "checksum": "3389"
+          },
+          {
+            "name": "3600 simulation ticks, 10 bots",
+            "medianMs": 189.979,
+            "checksum": "512817f79515e740fde72f8ce967eade3943a64397dccfdf118660ced7694b6f"
+          }
+        ]
+      }
+    ],
+    "optimized": [
+      {
+        "node": "v22.16.0",
+        "samples": 5,
+        "reports": [
+          {
+            "name": "300 navigation requests",
+            "medianMs": 2.185,
+            "checksum": "0f471e902d38922e721af795b52ac85c5206c5eee4fa059703c03288af0d7fc3"
+          },
+          {
+            "name": "100000 ray/box intersections",
+            "medianMs": 3.665,
+            "checksum": "103781.5621294829"
+          },
+          {
+            "name": "3600 simulation ticks, 6 bots",
+            "medianMs": 22.047,
+            "checksum": "e8819d0a8adcb61b45744692168bffbd226f9504e7b95ce34b281652e8bdae3e"
+          },
+          {
+            "name": "20000 circle/box collision queries",
+            "medianMs": 0.836,
+            "checksum": "3389"
+          },
+          {
+            "name": "3600 simulation ticks, 10 bots",
+            "medianMs": 61.392,
+            "checksum": "512817f79515e740fde72f8ce967eade3943a64397dccfdf118660ced7694b6f"
+          }
+        ]
+      },
+      {
+        "node": "v22.16.0",
+        "samples": 5,
+        "reports": [
+          {
+            "name": "300 navigation requests",
+            "medianMs": 2.183,
+            "checksum": "0f471e902d38922e721af795b52ac85c5206c5eee4fa059703c03288af0d7fc3"
+          },
+          {
+            "name": "100000 ray/box intersections",
+            "medianMs": 3.689,
+            "checksum": "103781.5621294829"
+          },
+          {
+            "name": "3600 simulation ticks, 6 bots",
+            "medianMs": 21.872,
+            "checksum": "e8819d0a8adcb61b45744692168bffbd226f9504e7b95ce34b281652e8bdae3e"
+          },
+          {
+            "name": "20000 circle/box collision queries",
+            "medianMs": 0.81,
+            "checksum": "3389"
+          },
+          {
+            "name": "3600 simulation ticks, 10 bots",
+            "medianMs": 63.786,
+            "checksum": "512817f79515e740fde72f8ce967eade3943a64397dccfdf118660ced7694b6f"
+          }
+        ]
+      },
+      {
+        "node": "v22.16.0",
+        "samples": 5,
+        "reports": [
+          {
+            "name": "300 navigation requests",
+            "medianMs": 2.251,
+            "checksum": "0f471e902d38922e721af795b52ac85c5206c5eee4fa059703c03288af0d7fc3"
+          },
+          {
+            "name": "100000 ray/box intersections",
+            "medianMs": 3.708,
+            "checksum": "103781.5621294829"
+          },
+          {
+            "name": "3600 simulation ticks, 6 bots",
+            "medianMs": 22.044,
+            "checksum": "e8819d0a8adcb61b45744692168bffbd226f9504e7b95ce34b281652e8bdae3e"
+          },
+          {
+            "name": "20000 circle/box collision queries",
+            "medianMs": 0.845,
+            "checksum": "3389"
+          },
+          {
+            "name": "3600 simulation ticks, 10 bots",
+            "medianMs": 63.221,
+            "checksum": "512817f79515e740fde72f8ce967eade3943a64397dccfdf118660ced7694b6f"
+          }
+        ]
+      }
+    ]
+  }
+}

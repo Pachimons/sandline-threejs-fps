@@ -4,10 +4,15 @@ import {Simulation} from '../src/game/simulation.ts';
 import {EMPTY_INPUT} from '../src/game/types.ts';
 import {LOADOUTS} from '../src/game/loadouts.ts';
 
-test('round starts directly without a preparation or purchase phase',()=>{
+test('round starts directly and permits purchases only during the opening spawn window',()=>{
   const sim=new Simulation(9);sim.start();const player=sim.state.player;
   assert.equal(sim.state.phase,'playing');assert.equal(player.money,800);
+  assert.equal(sim.purchase('armor'),true);assert.equal(player.armor,100);
+  player.money=16000;player.armor=0;player.z=0;
   assert.equal(sim.purchase('armor'),false);assert.equal(player.armor,0);
+  player.z=16;sim.state.roundTime=84;
+  assert.equal(sim.purchase('armor'),false);assert.equal(player.armor,0);
+  assert.equal(player.money,16000,'rejected purchases must not spend money');
 });
 
 test('T can plant at A and CT can defuse before the fuse expires',()=>{

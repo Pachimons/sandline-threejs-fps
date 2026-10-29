@@ -19,7 +19,6 @@ export class FirstPersonController {
   readonly body:RAPIER.RigidBody;
   private readonly camera:THREE.Camera;
   private readonly ray = new RAPIER.Ray({x:0,y:0,z:0},{x:0,y:-1,z:0});
-  private readonly velocity = new THREE.Vector3();
   private readonly sway = new THREE.Vector2();
   private bobTime = 0;
   private last = new THREE.Vector3();
@@ -49,8 +48,6 @@ export class FirstPersonController {
     this.body.setNextKinematicTranslation(position);
     this.world.step();
     const rawSpeed=Math.max(0,frame.speed);
-    const blend=1-Math.exp(-delta*12);
-    this.velocity.lerp(new THREE.Vector3(frame.moving?rawSpeed:0,0,0),blend);
     if(!this.initialized){this.last.set(frame.x,frame.y,frame.z);this.initialized=true;}
     const distance=Math.hypot(frame.x-this.last.x,frame.z-this.last.z);
     const measured=delta>0?distance/delta:0;

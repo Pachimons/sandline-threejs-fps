@@ -2,6 +2,9 @@ import { moveBody } from './collision';
 import type { Actor } from './types';
 type Point = { x: number; z: number };
 export type Avoidance = { side: number; hold: number };
+// Candidate angles never change; keep trigonometry out of each steering update.
+const turns=[.65,1.05,1.57,-.65,-1.05,-1.57,0,2.2,-2.2,Math.PI]
+ .map(angle=>({angle,cos:Math.cos(angle),sin:Math.sin(angle)}));
 
 /** Local steering before contact; each walker prefers its own right-hand side.
  * Remember the chosen side so two bots do not mirror each other's oscillation.
@@ -31,8 +34,8 @@ export function avoidActors(actor: Actor, desired: Point, actors: Actor[], dt: n
     if(clear(point))return point;
   }
   let best: Point={x:actor.x,z:actor.z}, bestScore=-Infinity, chosen=state.side||1;
-  for (const angle of [.65,1.05,1.57,-.65,-1.05,-1.57,0,2.2,-2.2,Math.PI]) {
-    const c=Math.cos(angle),s=Math.sin(angle),x=forward.x*c-forward.z*s,z=forward.x*s+forward.z*c;
+  for (const {angle,cos:c,sin:s} of turns) {
+    const x=forward.x*c-forward.z*s,z=forward.x*s+forward.z*c;
     const point=moveBody(actor.x,actor.z,x*step,z*step);
     if(Math.hypot(point.x-actor.x,point.z-actor.z)<step*.7||!clear(point))continue;
     const horizon=.9, probe=moveBody(actor.x,actor.z,x*horizon,z*horizon);
